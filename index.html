@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Love That Grows</title>
+    <style>
+      #code {
+        margin-top: 50px;
+        font-family: monospace;
+        color: #4b0082;
+        text-align: left;
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .comments {
+        color: #008000;
+      }
+
+      .keyword {
+        color: #0000ff;
+      }
+
+      .string {
+        color: #d2691e;
+      }
+
+      #errorMsg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 0, 0, 0.7);
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 18px;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+    <link href="style.css" rel="stylesheet" />
+    <script src="garden.js"></script>
+	<script src="jquery.js"></script>
+    <script src="functions.js"></script>
+  </head>
+
+  <body>
+    <div id="mainDiv">
+      <div id="content">
+        <div id="loveHeart">
+          <canvas id="garden"></canvas>
+          <div id="words">
+            <div id="messages">
+              My dearest, since the moment we met,
+              <div id="elapseClock"></div>
+            </div>
+            <div id="loveu">
+              I'll love you forever and beyond.<br />
+              <div class="signature">- Jessica</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="code">
+          <span class="comments">/**</span><br />
+          <span class="space"
+            ><span class="comments"
+              >* Our journey began when we crossed paths,</span
+            ></span
+          ><br />
+          <span class="space"
+            ><span class="comments"
+              >* and I found myself captivated by your presence.</span
+            ></span
+          ><br />
+          <span class="space"><span class="comments">*/</span></span
+          ><br />
+          <span class="keyword">Person</span> me =
+          <span class="keyword">new</span> Person(<span class="string"
+            >"MyDearest"</span
+          >);<br />
+          <span class="keyword">Person</span> you =
+          <span class="keyword">new</span> Person(<span class="string"
+            >"MyLove"</span
+          >);<br />
+          <span class="comments"
+            >// From the very first moment, I knew you were my everything.</span
+          ><br />
+          me.love(you);<br />
+          <span class="comments"
+            >// With every word, every look, I fall more deeply in love with
+            you.</span
+          ><br />
+          <span class="keyword">boolean</span> isContent =
+          <span class="keyword">true</span>;<br />
+          <span class="keyword">while</span> (isContent) {<br />
+          <span class="placeholder" />me.thinkOf(you);<br />
+          <span class="placeholder" />me.support(you);<br />
+          <span class="placeholder" />isContent = you.smile();<br />
+          }<br />
+          <span class="comments"
+            >// Together, we'll continue to grow and cherish every moment.</span
+          ><br />
+          me.stayWith(you);<br />
+          me.liveInJoyWith(you);<br />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var offsetX = $("#loveHeart").width() / 2;
+      var offsetY = $("#loveHeart").height() / 2 - 55;
+      var together = new Date();
+      together.setFullYear(2023, 8, 16);
+      together.setHours(20);
+      together.setMinutes(0);
+      together.setSeconds(0);
+      together.setMilliseconds(0);
+
+      if (!document.createElement("canvas").getContext) {
+        var msg = document.createElement("div");
+        msg.id = "errorMsg";
+        msg.innerHTML =
+          "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+        document.body.appendChild(msg);
+        $("#code").css("display", "none");
+        $("#copyright").css("position", "absolute");
+        $("#copyright").css("bottom", "10px");
+        document.execCommand("stop");
+      } else {
+        startHeartAnimation();
+
+        timeElapse(together);
+        setInterval(function () {
+          timeElapse(together);
+        }, 300);
+
+        adjustCodePosition();
+        $("#code").typewriter();
+      }
+    </script>
+  </body>
+</html>
